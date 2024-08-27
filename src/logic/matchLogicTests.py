@@ -5,6 +5,7 @@ from matchLogic import (
     getGroseStraseScore,
     getKleineStraseScore,
     getFullHouseScore,
+    getKniffelScore,
 )
 
 
@@ -36,6 +37,9 @@ class Tests(unittest.TestCase):
     def testGetFullHouseScore(self):
         self.mainTest("fullhouse", getFullHouseScore)
 
+    def testGetKniffelScore(self):
+        self.mainTest("kniffel", getKniffelScore)
+
 
 def t(numbers):
     return [{"value": number, "isChangeable": True} for number in numbers]
@@ -57,6 +61,7 @@ testResults = {
     "kleinestrase": [30, 30, -1, -1, 30, -1],
     "grosestrase": [40, 40, -1, -1, -1, -1],
     "fullhouse": [-1, -1, -1, 25, -1, -1],
+    "kniffel": [-1, -1, -1, -1, -1, -1],
 }
 
 

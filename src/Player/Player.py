@@ -18,6 +18,7 @@ class Player:
             "kleinestrase": 0,
             "grosestrase": 0,
             "kniffel": 0,
+            "chance": 0,
         }
         self.upperscores = [
             "einser",
@@ -35,6 +36,7 @@ class Player:
             "kleinestrase",
             "grosestrase",
             "kniffel",
+            "chance",
         ]
 
     def getUpperScore(self):

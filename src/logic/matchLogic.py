@@ -65,3 +65,13 @@ def getFullHouseScore(dice: List):
     ) and dice[0] is not dice[3]:
         return 25
     return -1
+
+
+def getKniffelScore(dice: List):
+    dice = [d["value"] for d in dice]
+    dice.sort()
+
+    if dice[0] == dice[-1]:
+        return 50
+
+    return -1

@@ -7,6 +7,7 @@ from src.logic.matchLogic import (
     getKleineStraseScore,
     getFullHouseScore,
     getPaschScore,
+    getKniffelScore,
 )
 from src.Game.Game import Game
 from src.Player.Player import Player
@@ -80,8 +81,11 @@ class GamePage(QWidget):
             )
         )
         self.kniffel_button.clicked.connect(
+            lambda: self.processPlayerPick("kniffel", getKniffelScore(self.game.dice))
+        )
+        self.chance_button.clicked.connect(
             lambda: self.processPlayerPick(
-                "kniffel", sum([d["value"] for d in self.game.dice])
+                "chance", sum([d["value"] for d in self.game.dice])
             )
         )
 
@@ -120,6 +124,7 @@ class GamePage(QWidget):
         self.helper_setButton(self.kleinestrase_button, scores["kleinestrase"])
         self.helper_setButton(self.grosestrase_button, scores["grosestrase"])
         self.helper_setButton(self.kniffel_button, scores["kniffel"])
+        self.helper_setButton(self.chance_button, scores["chance"])
 
         self.sum_top.setText(f"Summe Oben: {upperscore}")
         self.sum_bottom.setText(f"Summe Unten: {lowerscore}")
@@ -157,7 +162,7 @@ class GamePage(QWidget):
 
         self.game.nextPlayer()
 
-        if self.game.round == 13:
+        if self.game.round == 14:
             self.showNextPage(EndPage(self.game.players))
             return
 
